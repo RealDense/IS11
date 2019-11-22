@@ -135,7 +135,7 @@ Bugs to vladimir dot kulyukin at usu dot edu
     (make-op :action 'eat-bananas
 	     :preconds '(has-bananas)
 	     :add-list '(not-hungry)
-	     :del-list '(has-bananas))
+	     :del-list '(has-bananas hungry))
     (make-op :action 'grasp-bananas
 	     :preconds '(climb-on-chair drop-ball)
 	     :add-list '(has-bananas))
