@@ -131,8 +131,27 @@ Bugs to vladimir dot kulyukin at usu dot edu
 (defparameter *banana-ops*
   ;;; WRITE YOUR OPERATORS HERE.
   ;;; use the same syntax as in *school-ops* abovev.
-  nil
-  )
+  (list
+    (make-op :action 'eat-bananas
+	     :preconds '(has-bananas)
+	     :add-list '(not-hungry)
+	     :del-list '(has-bananas))
+    (make-op :action 'grasp-bananas
+	     :preconds '(climb-on-chair drop-ball)
+	     :add-list '(has-bananas))
+    (make-op :action 'climb-on-chair
+	     :preconds '(push-chair-from-door-to-middle-room on-floor at-middle-room)
+	     :add-list '(on-chair)
+       :del-list '(on-floor))
+    (make-op :action 'push-chair-from-door-to-middle-room
+	     :preconds '(at-door chair-at-door)
+	     :add-list '(chair-at-middle-room at-middle-room)
+       :del-list '(at-door chair-at-door))
+    (make-op :action 'drop-ball
+	     :preconds '(has-ball)
+	     :add-list '(empty-handed)
+       :del-list '(has-ball)))
+)
 
 (mapc #'convert-op *banana-ops*)
 
